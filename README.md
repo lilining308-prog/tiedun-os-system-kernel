@@ -3,6 +3,9 @@
 小米 8（dipper / 高通骁龙 845 / sdm845）系统内核，随「铁盾 OS 1.0.2.4」交付。
 Linux **4.19.325**（4.19-CIP 系，perf 血统）+ **KernelSU-Next**（内置 Root，默认激活）。
 
+> 📦 **源码仓库**：主仓（定制/文档/构建说明）<https://github.com/lilining308-prog/tiedun-os> ｜
+> 内核仓（本仓）<https://github.com/lilining308-prog/tiedun-os-system-kernel>
+
 - 适用机型：小米 8（dipper）
 - 上游血统：[sdm845-419/android_kernel_xiaomi_sdm845_419](https://github.com/sdm845-419/android_kernel_xiaomi_sdm845_419)（perf）× KernelSU-Next 12759 + SUSFS
 - 内核构建后合入 boot.img，dtbo 随内核；平台侧构建说明见主仓 `docs/BUILDING.md`
