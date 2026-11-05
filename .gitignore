@@ -159,3 +159,12 @@ arch/arm64/boot/dts/xiaomi
 !scripts/*.sh
 !techpack/mi845/
 !techpack/mi845/**
+
+# TieDun 补全(2): 放行上游本有文件 — .* 与 *.sh 全局忽略的误伤
+!*.sh
+!.gitattributes
+!.get_maintainer.ignore
+!fs/exfat/.github/
+!fs/exfat/.github/**
+!arch/sh/boot/compressed/vmlinux.scr
+!arch/sh/boot/romimage/vmlinux.scr
