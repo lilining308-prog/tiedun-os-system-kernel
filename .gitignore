@@ -150,3 +150,7 @@ techpack/xiaomi-sdm845
 techpack/mi845
 arch/arm64/boot/dts/qcom-sdm845
 arch/arm64/boot/dts/xiaomi
+
+# TieDun A18: patches/ 为交付目录(kernel README), 豁免 quilt/ *.sh 忽略
+!patches/
+!patches/**

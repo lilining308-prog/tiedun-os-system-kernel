@@ -6,6 +6,7 @@
 #define _UAPI_LINUX_MSM_ION_H
 
 #include <linux/types.h>
+#include "ion.h"  /* TieDun A9: 恢复 QTI 原版 include 链 */
 
 #define ION_BIT(nr) (1U << (nr))
 
@@ -86,6 +87,16 @@ enum ion_heap_ids {
  * Do NOT use BIT macro since it is defined in #ifdef __KERNEL__
  */
 #define ION_FLAG_SECURE			ION_BIT(ION_HEAP_ID_RESERVED)
+
+/*
+ * TieDun A8: 恢复 QTI 原版 "Deprecated! Please use the corresponding
+ * ION_FLAG_*" 兼容别名(msm-4.19 重基时丢失). display/media HAL
+ * (lineage-23.2-caf-sdm845) 仍用旧名 ION_SECURE. 原文出处: QTI kernel/msm
+ * drivers/staging/android/uapi/msm_ion.h
+ */
+#ifndef ION_SECURE
+#define ION_SECURE ION_FLAG_SECURE
+#endif
 
 /*
  * Used in conjunction with heap which pool memory to force an allocation

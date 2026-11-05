@@ -64,6 +64,7 @@ enum ion_heap_type {
  *
  * Provided by userspace as an argument to the ioctl
  */
+#ifdef __KERNEL__
 struct ion_allocation_data {
 	__u64 len;
 	__u32 heap_id_mask;
@@ -71,6 +72,21 @@ struct ion_allocation_data {
 	__u32 fd;
 	__u32 unused;
 };
+#else
+/*
+ * TieDun A9: userspace 侧提供 pre-4.12 手柄式(handle) 老 ABI 布局,
+ * 兼容 lineage-23.2-caf-sdm845 血统的 display/media HAL. 内核 CONFIG_ION_LEGACY
+ * 完整实现该 ABI(handle 内部即 fd), 语义无损. size_t 字段与 QTI
+ * 原版一致(兼容 %zu 格式串与 compat_ion.c 的 32 位 20B 布局).
+ */
+struct ion_allocation_data {
+	size_t len;
+	size_t align;
+	__u32 heap_id_mask;
+	__u32 flags;
+	__s32 handle;
+};
+#endif
 
 #define MAX_HEAP_NAME			32
 
@@ -120,5 +136,47 @@ struct ion_heap_query {
  */
 #define ION_IOC_HEAP_QUERY     _IOWR(ION_IOC_MAGIC, 8, \
 					struct ion_heap_query)
+
+#ifndef __KERNEL__
+/* TieDun A9: pre-4.12 老 ABI 兼容导出(内核实现于 ion_legacy.h / ion-ioctl.c,
+ * 文件参考 QTI 旧版 uapi/ion.h 与内核 ion_legacy.h) */
+typedef int ion_user_handle_t;
+
+struct ion_fd_data {
+	ion_user_handle_t handle;
+	int fd;
+};
+
+struct ion_handle_data {
+	ion_user_handle_t handle;
+};
+
+struct ion_flush_data {
+	ion_user_handle_t handle;
+	int fd;
+	void *vaddr;
+	unsigned int offset;
+	unsigned int length;
+};
+
+struct ion_custom_data {
+	unsigned int cmd;
+	unsigned long arg;
+};
+
+#define ION_IOC_FREE		_IOWR(ION_IOC_MAGIC, 1, struct ion_handle_data)
+#define ION_IOC_MAP		_IOWR(ION_IOC_MAGIC, 2, struct ion_fd_data)
+#define ION_IOC_CUSTOM		_IOWR(ION_IOC_MAGIC, 3, struct ion_custom_data)
+#define ION_IOC_SHARE		_IOWR(ION_IOC_MAGIC, 4, struct ion_fd_data)
+#define ION_IOC_IMPORT		_IOWR(ION_IOC_MAGIC, 5, struct ion_fd_data)
+
+/* 缓存维护命令(ion_custom_data.cmd): 4.19 内核未实现 ION_IOC_CUSTOM,
+ * 调用将得 ENOTTY 并由 dma-buf 自动管理缓存, 仅为编译兼容保留 */
+enum {
+	ION_IOC_CLEAN_CACHES = 0,
+	ION_IOC_INV_CACHES,
+	ION_IOC_CLEAN_INV_CACHES,
+};
+#endif /* !__KERNEL__ */
 
 #endif /* _UAPI_LINUX_ION_H */

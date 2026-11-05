@@ -1,0 +1,13 @@
+# A18 dtb 清单（顺序 = boot.img 拼接顺序；sha256 = 原始 dtb 字节）
+dipper-p1-v2-cn.dtb  8b314859d9112a3e1dee1c65fcea06382d010f01b36e0218bef97f996a132cdb  Xiaomi Technologies, Inc. Dipper new P1 v2 cn
+dipper-p2-v2p1.dtb  e1dd402b89eb592c4205419a38b5d2f1c65097b516159683ddcf788bdd788666  Xiaomi Technologies, Inc. Dipper new P2 v2.1
+dipper-p1-v2-gb.dtb  8353388884f0f1ce092fc313d6a650898135372e03123af2d1bc1d05dc3adf80  Xiaomi Technologies, Inc. Dipper new P1 v2 gb
+dipper-p1-v2p1-gb.dtb  e3e0699e60873ca92e39ddb9863fb6b1483e374e0c639c1de4484d9906fc0f8e  Xiaomi Technologies, Inc. Dipper new P1 v2.1 gb
+dipper-p0-v2p1.dtb  1487b633b44b67b4ed3b482f6cd39c4df78d55e9e39d7616b9834a5f4f576b78  Xiaomi Technologies, Inc. Dipper new P0 v2.1
+dipper-mp-v2.dtb  a175a930aa0f9c04e58c2c1b3c91e01557b9bd9d882e3a37786813fd65d65c9b  Xiaomi Technologies, Inc. Dipper new MP v2
+dipper-p0-v2.dtb  d3f6b2e9361fa551696dfd3a38d3730cbd6cd031b143273c4b6eeb32eea8eaae  Xiaomi Technologies, Inc. Dipper new P0 v2
+dipper-p1p1-v2.dtb  82443d3f2ecc0751a8b8a415ae84a5dc51441e3eb83de2dbc4fa6f40856a93f4  Xiaomi Technologies, Inc. Dipper new P1.1 v2
+dipper-p2-v2.dtb  ecf7ecd361414d92a5033adc74ee642e3527eadc2eba925d2007a79c4edc3aaa  Xiaomi Technologies, Inc. Dipper new P2 v2
+dipper-p1-v2p1-cn.dtb  5f6517f21421855e46f0298e901bab831182d3fb97e391e73c8497307e95da77  Xiaomi Technologies, Inc. Dipper new P1 v2.1 cn
+dipper-mp-v2p1.dtb  42085fb8e47a266387d002d4f852a5f703002b310f2e99fed1e5ee74e25f692c  Xiaomi Technologies, Inc. Dipper new MP v2.1
+dipper-p1p1-v2p1.dtb  dd75aeb7089ffcec054732f073a83a5e5a152a130390bf7276b99e4bdf016e5f  Xiaomi Technologies, Inc. Dipper new P1.1 v2.1
